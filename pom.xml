@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>eu.mickelson.sb.ws</groupId>
+    <artifactId>socialbullguard-webservice</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    
+    <properties>
+        <youconnect.version>0.3.18</youconnect.version>
+        <spring.version>3.2.2.RELEASE</spring.version>
+		<maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
+		<build.date>${maven.build.timestamp}</build.date>
+	</properties>
+	
+    <build>
+        <finalName>wsbullguard</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+						<manifestSections>
+							<manifestSection>
+								<name>wsbullguard</name>		
+								<manifestEntries>
+									<Release-Date>${maven.build.timestamp}</Release-Date>
+									<Application-Version>${project.version}</Application-Version>
+								</manifestEntries>
+							</manifestSection>
+						</manifestSections>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>    
