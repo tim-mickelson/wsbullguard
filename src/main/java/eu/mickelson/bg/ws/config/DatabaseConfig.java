@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jndi.JndiObjectFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.SharedEntityManagerBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -18,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
 @Configuration
-//@EnableTransactionManagement
+@EnableTransactionManagement
 public class DatabaseConfig {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -43,7 +44,7 @@ public class DatabaseConfig {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setDataSource(dataSource());
 		factory.setPackagesToScan(new String[] { "com.socialpainkiller.entities" });
-		factory.setPersistenceUnitName("JPADB");
+		factory.setPersistenceUnitName("JPADB2");
 
         HibernateJpaVendorAdapter va = new HibernateJpaVendorAdapter();
         factory.setJpaVendorAdapter(va);
@@ -51,8 +52,8 @@ public class DatabaseConfig {
         Properties ps = new Properties();
         ps.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         ps.put("hibernate.format_sql", "true");
+        ps.put("hibernate.show_sql", "false");
         factory.setJpaProperties(ps);
- 
         factory.afterPropertiesSet();
 
 		logger.debug("end");
@@ -62,9 +63,8 @@ public class DatabaseConfig {
 	@Bean 
 	public PlatformTransactionManager transactionManager() throws IllegalArgumentException, NamingException{
 		logger.debug("start");
-		//JpaTransactionManager manager = new JpaTransactionManager ();
-		//manager.setEntityManagerFactory(entityManagerFactory().getObject());
-		JtaTransactionManager manager = new JtaTransactionManager();
+		JpaTransactionManager manager = new JpaTransactionManager ();
+		manager.setEntityManagerFactory(entityManagerFactory().getObject());
 		logger.debug("end");
 		return manager;
 	} 
@@ -77,8 +77,5 @@ public class DatabaseConfig {
 		logger.debug("end");
 		return entityManager;
 	}
-	
-	/*	
-*/
 	
 }  // end public class DatabaseConfig
