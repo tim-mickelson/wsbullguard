@@ -8,21 +8,13 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/**
+ * @EnableWebMVC, this is the same as <mvc:annotation-driven/>
+ * @author vaio
+ *
+ */
 @Configuration
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
-/*
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-    }
+public class WebConfig {
 
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
- */
 }  // end public class WebConfig
