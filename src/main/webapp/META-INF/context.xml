@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="wsbullguard" path="/wsbullguard" reloadable="true">
+<!-- http://www.atomikos.com/Documentation/Tomcat6Integration33 -->
+<!--
+
+    <Transaction factory="com.atomikos.icatch.jta.UserTransactionFactory" />
+    
+	<Resource name="jdbc/youconnect" 
+		auth="Container" 
+		type="com.atomikos.jdbc.AtomikosDataSourceBean"
+		factory="com.atomikos.tomcat.BeanFactory"
+    	uniqueResourceName="youconnect"
+    	xaDataSourceClassName="org.postgresql.xa.PGXADataSource"
+    	xaProperties.serverName="localhost"
+    	xaProperties.portNumber="5432"
+    	xaProperties.databaseName="youconnect"
+    	xaProperties.user="postgres"
+    	xaProperties.password="postgres"		
+		maxActive="20"
+		maxIdle="10"
+		validationQuery="select 1" />
+-->
+
+	<Resource name="jdbc/youconnect" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		username="postgres"
+		password="postgres"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://127.0.0.1:5432/youconnect"
+		maxActive="20"
+		maxIdle="10"
+		validationQuery="select 1" />
+</Context> 
