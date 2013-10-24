@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.socialpainkiller.entities.cubenotes.Task;
+
+import eu.mickelson.bg.ws.beans.TaskBean;
 import eu.mickelson.bg.ws.task.business.TaskBO;
 
 @Controller
@@ -19,11 +22,13 @@ public class TaskController {
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)
 	@ResponseBody
-	public String test(){
+	public TaskBean test(){
 		logger.debug("start");
-		String r = taskBO.test();
+		Task r = taskBO.test();
+		TaskBean bean = new TaskBean();
+		bean.setContent(r.getContent());
 		logger.debug("end");
-		return r;
+		return bean;
 	}
 	
 }  // end public class TaskController

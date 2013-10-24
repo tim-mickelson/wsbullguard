@@ -16,7 +16,7 @@ public class TaskBO {
 	@Autowired
 	DataSource dataSource;
 	
-	public String test(){
+	public Task test(){
 		logger.debug("start");
 		Long id = 14011L;
 		Task task = entityManager.find(Task.class, id);
@@ -27,7 +27,7 @@ public class TaskBO {
 		else
 			msg = task.getContent();
 		logger.debug("end");
-		return msg;
+		return task;
 	}
 	
 }
