@@ -1,4 +1,4 @@
-package foo;
+package eu.mickelson.bg.ws.android;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -9,14 +9,6 @@
    	<artifactId>ws-webapp</artifactId>
     <packaging>war</packaging>
     
-    <properties>
-		<spring.version>3.2.2.RELEASE</spring.version>
-        <youconnect.version>0.3.18</youconnect.version>
-        <spring.version>3.2.2.RELEASE</spring.version>
-		<maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
-		<build.date>${maven.build.timestamp}</build.date>
-	</properties>
-	
     <build>
         <finalName>wsbullguard</finalName>
         <plugins>
